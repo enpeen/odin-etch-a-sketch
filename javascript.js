@@ -34,7 +34,7 @@ generateGrid();
 const changeGridSize = document.getElementById("changeGridSize");
 changeGridSize.addEventListener("click", function() {
     removeGrid();
-    gridSize = prompt("Enter a number of squares per axis(up to a 100). More squares means more detailed canvas");
+    gridSize = prompt("Enter a number of squares per axis (up to a 100). More squares means more detailed canvas");
     generateGrid();
 });
 
@@ -67,12 +67,19 @@ const gradient = document.getElementById("gradient");
 gradient.addEventListener("click", function() {
     const divs = document.querySelectorAll(".innerDiv");
     divs.forEach(function(div) {
-        let eventCount = 256;
+        let eventCount = 255;
         div.addEventListener("mouseenter", function() {
-            eventCount = eventCount - 25.6;
+            eventCount = eventCount - 25.5;
             div.style.backgroundColor = "rgb("+eventCount+", "+eventCount+", "+eventCount+")";
         });
     });
 })
 
+const clearCanvas = document.getElementById("clearCanvas");
+clearCanvas.addEventListener("click", function() {
+    const divs = document.querySelectorAll(".innerDiv");
+    divs.forEach(function(div) {
+        div.style.backgroundColor = "white";
+    });
+});
 

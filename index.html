@@ -6,16 +6,67 @@
     <script src="javascript.js" defer></script>
     <style>
         body {
-            color: rgb(0, 0, 0); }
+            display: flex;
+            justify-content: center;
+            background-color: blue;
+        }
 
+        .left {
+            margin: 3px 50px;
+            background-color: red;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 4%;
+        }
+
+        h1 {
+            margin: 0px;
+            margin-top: 15px;
+            padding: 0px;
+            color: white;
+            font-size: 38px;
+        }
+
+        #container {
+            background-color: white;
+            margin: 50px;
+            margin-top: 15px;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        button {
+            margin: 10px;
+            background-color: red;
+            padding: 12px 25px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 15px;
+        }
+
+        button:hover {
+            background-color: rgb(255, 53, 53);
+        }
     </style>
 </head>
 <body>
-    <h1>Etch a Sketch</h1>
-    <div id="container"></div>
-    <button id="changeGridSize">Change number of squares</button>
-    <button id="rgb">Change color to random</button>
-    <button id="black">Change color to black</button>
-    <button id="gradient">Change color to progressively darkenning</button>
+    <div class="left">
+        <h1>Etch a Sketch</h1>
+        <div id="container"></div>
+    </div>
+    <div class="right">
+        <button id="changeGridSize">Change number of squares</button>
+        <button id="rgb">Change color to random</button>
+        <button id="black">Change color to black</button>
+        <button id="gradient">Change color to progressively darkenning</button>
+        <button id="clearCanvas">Clear canvas</button>
+    </div>
 </body>
 </html>
