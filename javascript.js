@@ -44,10 +44,10 @@ rgb.addEventListener("click", function() {
     const divs = document.querySelectorAll(".innerDiv");
     divs.forEach(function(div) {
         div.addEventListener("mouseenter", function() {
-            let x = Math.round(Math.random() * 256);
-            let y = Math.round(Math.random() * 256);
-            let z = Math.round(Math.random() * 256);
-            let randomColor = "rgb("+x+", "+y+", "+z+")";
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            let randomColor = "rgb("+r+", "+g+", "+b+")";
                 div.style.backgroundColor = randomColor;
         });
     });
@@ -62,5 +62,17 @@ black.addEventListener("click", function() {
         });
     });
 });
+
+const gradient = document.getElementById("gradient");
+gradient.addEventListener("click", function() {
+    const divs = document.querySelectorAll(".innerDiv");
+    divs.forEach(function(div) {
+        let eventCount = 256;
+        div.addEventListener("mouseenter", function() {
+            eventCount = eventCount - 25.6;
+            div.style.backgroundColor = "rgb("+eventCount+", "+eventCount+", "+eventCount+")";
+        });
+    });
+})
 
 
