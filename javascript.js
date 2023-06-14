@@ -33,9 +33,16 @@ generateGrid();
 
 const changeGridSize = document.getElementById("changeGridSize");
 changeGridSize.addEventListener("click", function() {
-    removeGrid();
-    gridSize = prompt("Enter a number of squares per axis (up to a 100). More squares means more detailed canvas");
-    generateGrid();
+    let gridSizeQuery = prompt("Enter a number of squares per axis (from 1 up to a 100, default is 16). More squares means more detailed canvas");
+    if (gridSizeQuery == undefined) {
+        //nothing, close the window
+    } else if (gridSizeQuery < 1 || gridSizeQuery > 100 || isNaN(gridSizeQuery)) {
+        alert("Please enter a valid value.");
+    } else {
+        removeGrid();
+        gridSize = gridSizeQuery;
+        generateGrid();
+    }
 });
 
 
