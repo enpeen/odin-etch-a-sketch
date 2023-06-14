@@ -29,9 +29,6 @@ function removeGrid() {
     }
 }
 
-generateGrid();
-getBlack();
-
 const changeGridSize = document.getElementById("changeGridSize");
 changeGridSize.addEventListener("click", function() {
     let gridSizeQuery = prompt("Enter a number of squares per axis (from 1 up to a 100, default is 16). More squares means more detailed canvas");
@@ -52,7 +49,7 @@ changeGridSize.addEventListener("click", function() {
             getGradient();
         }
     }
-});oí
+});
 
 const rgb = document.getElementById("rgb");
 rgb.addEventListener("click", getRGB);
@@ -106,3 +103,6 @@ clearCanvas.addEventListener("click", function() {
         div.style.backgroundColor = "white";
     });
 });
+
+generateGrid();
+getBlack();
