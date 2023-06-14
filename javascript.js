@@ -6,6 +6,7 @@ container.style.flexWrap = "wrap";
 container.style.border = "2px solid black";
 
 let gridSize = 16;
+let color;
 
 function generateGrid() {
     let flexBasis = 100 / gridSize;
@@ -14,12 +15,11 @@ function generateGrid() {
         innerDiv.className = "innerDiv";
         innerDiv.style.flexGrow = "1";
         innerDiv.style.flexBasis = flexBasis + "%";
-        innerDiv.addEventListener("mouseenter", function() {
+        /*innerDiv.addEventListener("mouseenter", function() {
             innerDiv.style.backgroundColor = "black";
-        });
+        });*/
         container.appendChild(innerDiv);
     }
-
 }
 
 function removeGrid() {
@@ -30,6 +30,7 @@ function removeGrid() {
 }
 
 generateGrid();
+getBlack();
 
 const changeGridSize = document.getElementById("changeGridSize");
 changeGridSize.addEventListener("click", function() {
@@ -37,18 +38,28 @@ changeGridSize.addEventListener("click", function() {
     if (gridSizeQuery == undefined) {
         //nothing, close the window
     } else if (gridSizeQuery < 1 || gridSizeQuery > 100 || isNaN(gridSizeQuery)) {
-        alert("Please enter a valid value.");
+        alert("Please enter a valid value");
     } else {
+        let preserveColor = color;
         removeGrid();
         gridSize = gridSizeQuery;
         generateGrid();
+        if (preserveColor === "black") {
+            getBlack();
+        } else if (preserveColor === "rgb") {
+            getRGB();
+        } else {
+            getGradient();
+        }
     }
-});
-
+});oí
 
 const rgb = document.getElementById("rgb");
-rgb.addEventListener("click", function() {
+rgb.addEventListener("click", getRGB);
+
+function getRGB() {
     const divs = document.querySelectorAll(".innerDiv");
+    color = "rgb";
     divs.forEach(function(div) {
         div.addEventListener("mouseenter", function() {
             let r = Math.floor(Math.random() * 256);
@@ -58,29 +69,35 @@ rgb.addEventListener("click", function() {
                 div.style.backgroundColor = randomColor;
         });
     });
-});
+}
 
 const black = document.getElementById("black");
-black.addEventListener("click", function() {
+black.addEventListener("click", getBlack);
+
+function getBlack() {
     const divs = document.querySelectorAll(".innerDiv");
+    color = "black";
     divs.forEach(function(div) {
         div.addEventListener("mouseenter", function() {
             div.style.backgroundColor = "black";
         });
     });
-});
+}
 
 const gradient = document.getElementById("gradient");
-gradient.addEventListener("click", function() {
+gradient.addEventListener("click", getGradient);
+
+function getGradient() {
     const divs = document.querySelectorAll(".innerDiv");
+    color = "gradient";
     divs.forEach(function(div) {
-        let eventCount = 255;
+        let shade = 255;
         div.addEventListener("mouseenter", function() {
-            eventCount = eventCount - 25.5;
-            div.style.backgroundColor = "rgb("+eventCount+", "+eventCount+", "+eventCount+")";
+            shade = shade - 25.5;
+            div.style.backgroundColor = "rgb("+shade+", "+shade+", "+shade+")";
         });
     });
-})
+}
 
 const clearCanvas = document.getElementById("clearCanvas");
 clearCanvas.addEventListener("click", function() {
@@ -89,4 +106,3 @@ clearCanvas.addEventListener("click", function() {
         div.style.backgroundColor = "white";
     });
 });
-
