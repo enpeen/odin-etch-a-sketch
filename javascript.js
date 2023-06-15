@@ -15,9 +15,6 @@ function generateGrid() {
         innerDiv.className = "innerDiv";
         innerDiv.style.flexGrow = "1";
         innerDiv.style.flexBasis = flexBasis + "%";
-        /*innerDiv.addEventListener("mouseenter", function() {
-            innerDiv.style.backgroundColor = "black";
-        });*/
         container.appendChild(innerDiv);
     }
 }
@@ -62,7 +59,7 @@ function getRGB() {
             let r = Math.floor(Math.random() * 256);
             let g = Math.floor(Math.random() * 256);
             let b = Math.floor(Math.random() * 256);
-            let randomColor = "rgb("+r+", "+g+", "+b+")";
+            let randomColor = "rgb("+r+", "+g+", "+b+")"; // #543322 alternative color assignment
                 div.style.backgroundColor = randomColor;
         });
     });
@@ -75,7 +72,7 @@ function getBlack() {
     const divs = document.querySelectorAll(".innerDiv");
     color = "black";
     divs.forEach(function(div) {
-        div.addEventListener("mouseenter", function() {
+        div.addEventListener("mouseenter", function() { // function(event) { event.target.style.backgroundColor = "black"; }
             div.style.backgroundColor = "black";
         });
     });
